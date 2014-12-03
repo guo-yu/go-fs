@@ -31,11 +31,9 @@ func TestFsReadJSON(t *testing.T) {
 		return
 	}
 
-	fmt.Println(json)
-
-	// if json == "{a:1, b:false}" {
-	// 	t.Log("Passed")
-	// } else {
-	// 	t.Error("Failed: file not match")
-	// }
+	if json["b"] == false {
+		t.Log("Passed")
+	} else {
+		t.Error("Did not match")
+	}
 }
