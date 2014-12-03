@@ -37,3 +37,18 @@ func TestFsReadJSON(t *testing.T) {
 		t.Error("Did not match")
 	}
 }
+
+func TestFsWriteJSON(t *testing.T) {
+	demoJson := map[string]string{
+		"a": "abcde",
+		"b": "cswsd",
+	}
+
+	err := WriteJSON("examples/tmp.json", demoJson)
+
+	if err != nil {
+		t.Error(err)
+	} else {
+		t.Log("Passed!")
+	}
+}
