@@ -1,9 +1,13 @@
 package fs
 
+import "os"
+import "path"
 import "testing"
 
+var cwd, err = os.Getwd()
+
 func TestFsReadFile(t *testing.T) {
-	str, _ := ReadFile("examples/test.txt")
+	str, _ := ReadFile(path.Join(cwd, "examples/test.txt"))
 
 	if str == "123456" {
 		t.Log("Passed!")
@@ -13,7 +17,7 @@ func TestFsReadFile(t *testing.T) {
 }
 
 func TestFsWriteFile(t *testing.T) {
-	err := WriteFile("examples/tmp.txt", "tmp file content")
+	err := WriteFile(path.Join(cwd, "examples/tmp.txt"), "tmp file content")
 
 	if err != nil {
 		t.Error(err)
@@ -23,7 +27,7 @@ func TestFsWriteFile(t *testing.T) {
 }
 
 func TestFsReadJSON(t *testing.T) {
-	json, err := ReadJSON("examples/test.json")
+	json, err := ReadJSON(path.Join(cwd, "examples/test.json"))
 
 	if err != nil {
 		t.Error(err)
@@ -43,7 +47,7 @@ func TestFsWriteJSON(t *testing.T) {
 		"b": "cswsd",
 	}
 
-	err := WriteJSON("examples/tmp.json", demoJson)
+	err := WriteJSON(path.Join(cwd, "examples/tmp.json"), demoJson)
 
 	if err != nil {
 		t.Error(err)

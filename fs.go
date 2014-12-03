@@ -1,19 +1,12 @@
 package fs
 
-import "os"
-import "path"
 import "io/ioutil"
 import "encoding/json"
 
 const FILEMODE = 0644
 
 func ReadFile(filename string) (fileContent string, err error) {
-	cwd, err := os.Getwd()
-	if err != nil {
-		return "", err
-	}
-
-	data, err := ioutil.ReadFile(path.Join(cwd, filename))
+	data, err := ioutil.ReadFile(filename)
 	if err != nil {
 		return "", err
 	}
@@ -24,12 +17,7 @@ func ReadFile(filename string) (fileContent string, err error) {
 }
 
 func WriteFile(filename string, fileContent string) error {
-	cwd, err := os.Getwd()
-	if err != nil {
-		return err
-	}
-
-	return ioutil.WriteFile(path.Join(cwd, filename), []byte(fileContent), FILEMODE)
+	return ioutil.WriteFile(filename, []byte(fileContent), FILEMODE)
 }
 
 func ReadJSON(filename string) (map[string]interface{}, error) {
@@ -52,18 +40,13 @@ func ReadJSON(filename string) (map[string]interface{}, error) {
 }
 
 func WriteJSON(filename string, content interface{}) error {
-	cwd, err := os.Getwd()
+	jsonString, err := json.Marshal(content)
+
 	if err != nil {
 		return err
 	}
 
-	jsonString, err2 := json.Marshal(content)
-
-	if err2 != nil {
-		return err2
-	}
-
-	ioutil.WriteFile(path.Join(cwd, filename), jsonString, FILEMODE)
+	ioutil.WriteFile(filename, jsonString, FILEMODE)
 
 	return nil
 }
