@@ -1,6 +1,5 @@
 package fs
 
-import "fmt"
 import "testing"
 
 func TestFsReadFile(t *testing.T) {
