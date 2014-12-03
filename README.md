@@ -32,12 +32,13 @@ func main() {
   // => `demo text`
   fmt.Println(fileString) 
   
-  data := make(map[string]interface{})
-  data["name"] = "John"
-  data["age"] = 12
+  data := map[string]string{
+    "a": "123",
+    "b": "456",
+  }
 
   // Create JSON file from a map
-  err := fs.WriteJSON("./demo.json", data)
+  err = fs.WriteJSON("./demo.json", data)
   check(err)
 
   // Read JSON file from tmp json file
