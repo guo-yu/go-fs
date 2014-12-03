@@ -1,6 +1,6 @@
 ## Go FileSystem
 
-fs in Golang.
+fs shortcuts in Golang.
 
 ### Installation
 ```bash
