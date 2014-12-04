@@ -1,8 +1,10 @@
 package fs
 
-import "os"
-import "io/ioutil"
-import "encoding/json"
+import (
+	"encoding/json"
+	"io/ioutil"
+	"os"
+)
 
 var Filemode os.FileMode = 0644
 
@@ -50,4 +52,9 @@ func WriteJSON(filename string, content interface{}) error {
 	ioutil.WriteFile(filename, jsonString, Filemode)
 
 	return nil
+}
+
+func Exists(filename string) bool {
+	_, err := os.Stat(filename)
+	return err == nil
 }

@@ -55,3 +55,13 @@ func TestFsWriteJSON(t *testing.T) {
 		t.Log("Passed!")
 	}
 }
+
+func TestFsExists(t *testing.T) {
+	fsGoExists := Exists("./fs.go")
+
+	if fsGoExists {
+		t.Log("Passed")
+	} else {
+		t.Error("Failed")
+	}
+}
