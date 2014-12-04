@@ -48,6 +48,18 @@ func main() {
 }
 ```
 
+### API
+
+#### Vars
+- Filemode: default by `0644`
+
+#### Functions
+
+- ReadFile(filename string) (fileContent string, err error)
+- WriteFile(filename string, fileContent string) error
+- ReadJSON(filename string) (map[string]interface{}, error)
+- WriteJSON(filename string, content interface{}) error
+
 ### Tests
 
 ```bash
