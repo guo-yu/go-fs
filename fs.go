@@ -1,9 +1,10 @@
 package fs
 
+import "os"
 import "io/ioutil"
 import "encoding/json"
 
-const FILEMODE = 0644
+var Filemode os.FileMode = 0644
 
 func ReadFile(filename string) (fileContent string, err error) {
 	data, err := ioutil.ReadFile(filename)
@@ -17,7 +18,7 @@ func ReadFile(filename string) (fileContent string, err error) {
 }
 
 func WriteFile(filename string, fileContent string) error {
-	return ioutil.WriteFile(filename, []byte(fileContent), FILEMODE)
+	return ioutil.WriteFile(filename, []byte(fileContent), Filemode)
 }
 
 func ReadJSON(filename string) (map[string]interface{}, error) {
@@ -46,7 +47,7 @@ func WriteJSON(filename string, content interface{}) error {
 		return err
 	}
 
-	ioutil.WriteFile(filename, jsonString, FILEMODE)
+	ioutil.WriteFile(filename, jsonString, Filemode)
 
 	return nil
 }
