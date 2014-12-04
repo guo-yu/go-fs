@@ -59,6 +59,7 @@ func main() {
 - WriteFile(filename string, fileContent string) error
 - ReadJSON(filename string) (map[string]interface{}, error)
 - WriteJSON(filename string, content interface{}) error
+- Exists(filename string) bool
 
 ### Tests
 
